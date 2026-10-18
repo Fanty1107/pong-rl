@@ -16,6 +16,7 @@ typedef struct{
     float gravity;
     DIRECTIONS drct;
 }Ball;
+
 Ball init_ball(Vector2 c, float rd,Color cl,float g);
 void start_ball(Ball *b);
 void move_ball(Ball *b, float deltaTime);

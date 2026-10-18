@@ -1,6 +1,5 @@
 #include "../include/padle.h"
 #include "../include/ball.h"
-#include <raylib.h>
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 800
@@ -19,6 +18,7 @@ int main(){
         float deltaTime = GetFrameTime();
         move_player(&p1, deltaTime);
         move_ball(&b,deltaTime);
+        b_collision(&b, &p1, &cpu);
         BeginDrawing();
             DrawRectangleRec(p1.body, p1.clr);
             DrawRectangleRec(cpu.body, cpu.clr);

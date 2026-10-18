@@ -5,15 +5,17 @@
     { .body = { .height = (H), .width = (W), .x = (X), .y = (Y) }, \
       .clr = (color), \
       .speed = (spd) }
-#include<raylib.h>
+#include "ball.h"
+#include <raylib.h>
 
-typedef struct{
+typedef struct Padle{
     Rectangle body;
     Color clr;
     float speed;
 }Padle;
 
 void move_player(Padle *player,float deltaTime);
+void move_cpu(Padle *cpu, Ball *b, float deltaTime);
 
 #endif
 

@@ -4,7 +4,6 @@
 #include <math.h>
 
 
-
 Ball init_ball(Vector2 c,Vector2 v, float rd, Color cl){
    Ball b = {.clr = cl, .center = c, .radius = rd, .velocity = v}; 
    return b;
@@ -23,6 +22,14 @@ void start_ball(Ball *b)
 void move_ball(Ball *b, float deltaTime){
     b->center.x += b->velocity.x * deltaTime;
     b->center.y += b->velocity.y * deltaTime;
+
+    if (b->center.y - b->radius < 0) {
+        b->center.y = b->radius;
+        b->velocity.y = -b->velocity.y;
+    } else if (b->center.y + b->radius > WINDOW_HEIGHT) {
+        b->center.y = WINDOW_HEIGHT - b->radius;
+        b->velocity.y = -b->velocity.y;
+    }
 }
 void b_collision(Ball *b, Padle *p1, Padle *p2){
     static double hit_time = 0.0;
@@ -65,9 +72,4 @@ void check_win(Ball *b){
     if(b->center.x > WINDOW_WIDTH || b->center.x < 0){
         start_ball(b);
     }
-}
-void check_wall(Ball *b){
-   if(b->center.y > WINDOW_HEIGHT || b->center.y < 0){
-       b->drct *= -1;
-   } 
 }

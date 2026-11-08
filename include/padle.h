@@ -12,6 +12,7 @@ typedef struct Padle{
     Rectangle body;
     Color clr;
     float speed;
+    DIRECTIONS direction;
 }Padle;
 
 void move_player(Padle *player,float deltaTime);

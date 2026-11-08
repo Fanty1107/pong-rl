@@ -3,10 +3,8 @@
 #include <raylib.h>
 
 typedef enum{
-    UP,
-    DOWN,
-    RIGHT,
-    LEFT,
+    UP = 1,
+    DOWN = -1,
 }DIRECTIONS;
 
 typedef struct Padle Padle;
@@ -22,7 +20,6 @@ typedef struct{
 Ball init_ball(Vector2 c,Vector2 v,float rd,Color cl);
 void start_ball(Ball *b);
 void check_win(Ball *b);
-void check_wall(Ball *b);
 void move_ball(Ball *b, float deltaTime);
 void b_collision(Ball *b, Padle *p1, Padle *p2);
 
